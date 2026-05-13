@@ -7,15 +7,15 @@ import CropSquareIcon from '@mui/icons-material/CropSquare';
 
 export default function BottomNav() {
   const handleChangeCube = () => {
-    console.log("j'ai été cliqued, cube !");
+    window.dispatchEvent(new CustomEvent('selectObject', { detail: 'cube' }));
   };
 
   const handleChangeSphere = () => {
-    console.log("j'ai été cliqued, sphere !");
+    window.dispatchEvent(new CustomEvent('selectObject', { detail: 'sphere' }));
   };
 
   const handleChangePrisme = () => {
-    console.log("j'ai été cliqued, Prisme");
+    window.dispatchEvent(new CustomEvent('selectObject', { detail: 'prisme' }));
   };
 
   return (
