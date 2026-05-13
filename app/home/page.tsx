@@ -1,17 +1,24 @@
 "use client";
 
 import { lusitana } from "../ui/font";
-import ThreeDRotationIcon from '@mui/icons-material/ThreeDRotation';
-import ThreeScene from '../ui/ThreeScene';
+import ThreeDRotationIcon from "@mui/icons-material/ThreeDRotation";
+import ThreeScene from "../ui/ThreeScene";
+import { Box } from "@mui/material";
 
 export default function Page() {
   return (
-    <main style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <h1 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
-        Model 3D
-        <ThreeDRotationIcon />
-      </h1>
-      <div style={{ width: '100vw', height: '70vh' }}>
+    <main
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
+      <Box
+        sx={{ display: "flex", gap: "10px", marginTop: "20px" }}
+      >
+        <h1 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
+          Model
+        </h1>
+        <ThreeDRotationIcon sx={{ fontSize: "2rem" }} />
+      </Box>
+      <div style={{ width: "100vw", height: "80vh" }}>
         <ThreeScene />
       </div>
     </main>

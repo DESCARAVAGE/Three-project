@@ -20,11 +20,11 @@ export default function ThreeScene() {
     }
 
     const handler = (e: Event) => {
-      const sel = (e as CustomEvent).detail;
+      const select = (e as CustomEvent).detail;
       if (!cube || !circle || !triangle) return;
-      cube.visible = sel === "cube";
-      circle.visible = sel === "sphere";
-      triangle.visible = sel === "prisme";
+      cube.visible = select === "cube";
+      circle.visible = select === "sphere";
+      triangle.visible = select === "prisme";
     };
 
     window.addEventListener("selectObject", handler as EventListener);
