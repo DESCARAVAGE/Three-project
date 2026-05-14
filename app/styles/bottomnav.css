@@ -9,9 +9,8 @@
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 8px;
-  height: 100px;
-  width: 500px;
-  padding: 5px;
-  padding-inline: 50px;
+  height: 5%;
+  width: fit-content;
+  padding: 1%;
   margin-bottom: 1vh;
 }
