@@ -39,8 +39,8 @@ export function createScene1(container) {
     
     const orbit = new OrbitControls(camera, renderer.domElement);
     orbit.update();
-    
-    // pause flag + simple raycast pour détecter le clic sur un objet
+
+    // pause flag + simple raycast pour détecter le clic sur un objet + stop the time
     let isPaused = false;
     const raycaster = new THREE.Raycaster();
     const pointer = new THREE.Vector2();
@@ -68,18 +68,32 @@ export function createScene1(container) {
     renderer.domElement.addEventListener('touchend', onPointerUp);
     
 
-    // boucle d'animation : Cela créera une boucle qui amènera le moteur de rendu à dessiner la scène à chaque fois que l'écran est actualisé (sur un écran typique, cela signifie 60 fois par seconde). Si vous débutez dans l'écriture de jeux dans le navigateur, vous pourriez dire "Pourquoi ne pas simplement créer un setInterval ?" Le truc c'est que nous pourrions, mais requestAnimationFrame qui est utilisé en interne dans WebGLRenderer présente un certain nombre d’avantages. Le plus important est peut-être qu’il s’arrête lorsque l’utilisateur accède à un autre onglet du navigateur, ne gaspillant ainsi pas sa précieuse puissance de traitement et la durée de vie de sa batterie.
+    // boucle d'animation : Cela créera une boucle qui amènera le moteur de rendu à 
+    // dessiner la scène à chaque fois que l'écran est actualisé (sur un écran typique,
+    // cela signifie 60 fois par seconde). Si vous débutez dans l'écriture de jeux dans le navigateur, 
+    // vous pourriez dire "Pourquoi ne pas simplement créer un setInterval ?" Le truc c'est que nous pourrions, 
+    // mais requestAnimationFrame qui est utilisé en interne dans WebGLRenderer présente un certain nombre
+    // d’avantages. Le plus important est peut-être qu’il s’arrête lorsque l’utilisateur accède à un autre 
+    // onglet du navigateur, ne gaspillant ainsi pas sa précieuse puissance de traitement et la durée de vie de 
+    // sa batterie.
+    let oldTime = 0;
+    let delta = 0;
+    let position = 0;
     function animate(time) {
         // si en pause, on n'applique pas les rotations (l'objet reste visible)
         if (!isPaused) {
-            cube.rotation.x = time / 2000;
-            cube.rotation.y = time / 1000;
-            cube.rotation.z = time / 5000;
+            delta = Math.min(time - oldTime, 100);
+            oldTime = time;
+            position += delta;
+            cube.rotation.x = position / 2000;
+            cube.rotation.y = position / 1000;
+            cube.rotation.z = position / 4000;
 
-            circle.rotation.y = time / 5000;
-            triangle.rotation.z = time / 5000;
+            circle.rotation.y = position / 5000;
+            triangle.rotation.z = position / 5000;
         }
         renderer.render(scene, camera);
+        
     };
 
     renderer.setAnimationLoop(animate);
