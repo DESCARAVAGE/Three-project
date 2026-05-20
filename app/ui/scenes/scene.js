@@ -9,26 +9,32 @@ import { createTriangle } from '../objects/triangle.js';
 export function createScene1(container) {
     // Création de scène pour accueillir nos artefacts
     const scene = new THREE.Scene();
-
+    const canvas = document.querySelector('#c');
+    console.log(canvas)
+    
     // const axesHelper = new THREE.AxesHelper(5);
     // scene.add(axesHelper);
 
-    // Crée et ajoute le cube (avec bordures) depuis le module `cube.js`
-    const cube = createCube();
+    //Crée et ajoute le fond de notre scène depuis le module.
+    // const background = createBackground();
+    // scene.add(background);
+
+    // Crée et ajoute les forme (avec bordures) depuis les modules. 
     const circle = createCircle();
+    const cube = createCube();
     const triangle = createTriangle();
     // add all objects but show only cube by default
-    circle.visible = false;
+    cube.visible = false;
     triangle.visible = false;
-    scene.add(cube);
     scene.add(circle);
+    scene.add(cube);
     scene.add(triangle);
 
     // caméra
     const camera = createCam();
     
     // C'est le moteur de rendu, En plus de créer l'instance de rendu, nous devons également définir la taille à laquelle nous souhaitons qu'elle restitue notre application. C'est une bonne idée d'utiliser la largeur et la hauteur de la zone que nous voulons remplir avec notre application - dans ce cas, la largeur et la hauteur de la fenêtre du navigateur. Pour les applications gourmandes en performances, vous pouvez également donner setSize des valeurs plus petites, comme window.innerWidth/2 et window.innerHeight/2, ce qui rendra l'application au quart de sa taille.
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    const renderer = new THREE.WebGLRenderer({ antialias: true, canvas, alpha: true});
     // append renderer to provided container (fallback to body)
     const mountPoint = container || document.body;
     // set initial size based on mountPoint
