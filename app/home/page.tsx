@@ -8,7 +8,7 @@ import '@/app/styles/globals.css';
 
 export default function Page() {
   return (
-    <main
+    <div
       style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
     >
       <Box sx={{ display: "flex", gap: "10px", marginBottom: "20px"  }}>
@@ -17,9 +17,9 @@ export default function Page() {
         </h1>
         <ThreeDRotationIcon sx={{ fontSize: "2rem" }} />
       </Box>
-      <div style={{ width: "100vw", height: "80vh" }}>
+      <div style={{ width: "100vw", height: "100%" }}>
         <ThreeScene />
       </div>
-    </main>
+    </div>
   );
 }

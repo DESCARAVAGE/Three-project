@@ -25,7 +25,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             display: "flex",
             justifyContent: "center",
             width: "100%",
-            marginTop: "50px",
+            marginTop: "30px",
+            
             overflowX: "hidden", // Empêche le scroll horizontal
           }}
         >

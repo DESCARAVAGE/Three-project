@@ -32,10 +32,6 @@ export function createScene1(container) {
     // const axesHelper = new THREE.AxesHelper(5);
     // scene.add(axesHelper);
 
-    //Crée et ajoute le fond de notre scène depuis le module.
-    // const background = createBackground();
-    // scene.add(background);
-
     // Crée et ajoute les forme (avec bordures) depuis les modules. 
     const circle = createCircle();
     const cube = createCube();
@@ -48,7 +44,6 @@ export function createScene1(container) {
     scene.add(triangle);
 
     {
-
 		const loader = new THREE.TextureLoader();
         const texture = loader.load(
             '/3d_grid_pano_cubemap.png',
@@ -57,12 +52,8 @@ export function createScene1(container) {
                 texture.mapping = THREE.EquirectangularReflectionMapping;
                 texture.colorSpace = THREE.SRGBColorSpace;
                 scene.background = texture;
-
             } );
-
 	}
-
-    
 
     // pause flag + simple raycast pour détecter le clic sur un objet + stop the time
     let isPaused = false;
