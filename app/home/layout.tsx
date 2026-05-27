@@ -1,4 +1,4 @@
-import BottomNav from "../ui/bottomnav";
+import BottomNav from "../ui/components/bottomnav";
 import { Box } from "@mui/material";
 import NoSsr from "@mui/material/NoSsr";
 
@@ -32,7 +32,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         >
           {children}
         </Box>
-
       </Box>
     </NoSsr>
   );

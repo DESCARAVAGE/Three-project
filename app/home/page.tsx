@@ -2,9 +2,10 @@
 
 import { lusitana } from "../ui/font";
 import ThreeDRotationIcon from "@mui/icons-material/ThreeDRotation";
-import ThreeScene from "../ui/ThreeScene";
+import ThreeScene from "../ui/components/ThreeScene";
 import { Box } from "@mui/material";
 import '@/app/styles/globals.css';
+import CirclePanel from "../ui/components/circlePanel";
 
 export default function Page() {
   return (
@@ -20,6 +21,7 @@ export default function Page() {
       <div style={{ width: "100vw", height: "100%" }}>
         <ThreeScene />
       </div>
+      <CirclePanel />
     </div>
   );
 }

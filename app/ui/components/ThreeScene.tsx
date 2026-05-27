@@ -1,7 +1,7 @@
 "use client"; // directive Next.js : rendre ce composant côté client
 
 import { useEffect, useRef } from "react"; // importe React et les hooks utilisés
-import { createScene1 } from "./scenes/scene"; // importe la fonction qui initialise la scène Three.js
+import { createScene1 } from "../scenes/scene"; // importe la fonction qui initialise la scène Three.js
 //
 
 // composant React affichant la scène 3D
