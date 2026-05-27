@@ -18,7 +18,6 @@ export default function Page() {
         <ThreeDRotationIcon sx={{ fontSize: "2rem" }} />
       </Box>
       <div style={{ width: "100vw", height: "80vh" }}>
-        <canvas id="c"></canvas> 
         <ThreeScene />
       </div>
     </main>

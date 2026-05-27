@@ -7,9 +7,9 @@ import { createTriangle } from '../objects/triangle.js';
 
 
 export function createScene1(container) {
-    const canvas = document.querySelector('#c');
-    // C'est le moteur de rendu, En plus de créer l'instance de rendu, nous devons également définir la taille à laquelle nous souhaitons qu'elle restitue notre application. C'est une bonne idée d'utiliser la largeur et la hauteur de la zone que nous voulons remplir avec notre application - dans ce cas, la largeur et la hauteur de la fenêtre du navigateur. Pour les applications gourmandes en performances, vous pouvez également donner setSize des valeurs plus petites, comme window.innerWidth/2 et window.innerHeight/2, ce qui rendra l'application au quart de sa taille.
-    const renderer = new THREE.WebGLRenderer({ antialias: true, canvas });
+    // Crée le renderer et laisse Three.js créer son propre canvas côté client.
+    // Evite d'utiliser document.querySelector('#c') qui peut renvoyer null en SSR.
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
     // caméra
     const camera = createCam();
     
