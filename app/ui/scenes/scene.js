@@ -7,11 +7,28 @@ import { createTriangle } from '../objects/triangle.js';
 
 
 export function createScene1(container) {
+    const canvas = document.querySelector('#c');
+    // C'est le moteur de rendu, En plus de créer l'instance de rendu, nous devons également définir la taille à laquelle nous souhaitons qu'elle restitue notre application. C'est une bonne idée d'utiliser la largeur et la hauteur de la zone que nous voulons remplir avec notre application - dans ce cas, la largeur et la hauteur de la fenêtre du navigateur. Pour les applications gourmandes en performances, vous pouvez également donner setSize des valeurs plus petites, comme window.innerWidth/2 et window.innerHeight/2, ce qui rendra l'application au quart de sa taille.
+    const renderer = new THREE.WebGLRenderer({ antialias: true, canvas });
+    // caméra
+    const camera = createCam();
+    
+    // append renderer to provided container (fallback to body)
+    const mountPoint = container || document.body;
+    // set initial size based on mountPoint
+    const width = mountPoint.clientWidth || window.innerWidth;
+    const height = mountPoint.clientHeight || window.innerHeight;
+    renderer.setSize(width, height);
+    mountPoint.appendChild(renderer.domElement);
+    
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.target.set( 0, 0, 0 );
+    controls.update();
+    
     // Création de scène pour accueillir nos artefacts
     const scene = new THREE.Scene();
-    const canvas = document.querySelector('#c');
-    console.log(canvas)
     
+
     // const axesHelper = new THREE.AxesHelper(5);
     // scene.add(axesHelper);
 
@@ -30,21 +47,22 @@ export function createScene1(container) {
     scene.add(cube);
     scene.add(triangle);
 
-    // caméra
-    const camera = createCam();
+    {
+
+		const loader = new THREE.TextureLoader();
+        const texture = loader.load(
+            '/3d_grid_pano_cubemap.png',
+            () => {
+
+                texture.mapping = THREE.EquirectangularReflectionMapping;
+                texture.colorSpace = THREE.SRGBColorSpace;
+                scene.background = texture;
+
+            } );
+
+	}
+
     
-    // C'est le moteur de rendu, En plus de créer l'instance de rendu, nous devons également définir la taille à laquelle nous souhaitons qu'elle restitue notre application. C'est une bonne idée d'utiliser la largeur et la hauteur de la zone que nous voulons remplir avec notre application - dans ce cas, la largeur et la hauteur de la fenêtre du navigateur. Pour les applications gourmandes en performances, vous pouvez également donner setSize des valeurs plus petites, comme window.innerWidth/2 et window.innerHeight/2, ce qui rendra l'application au quart de sa taille.
-    const renderer = new THREE.WebGLRenderer({ antialias: true, canvas, alpha: true});
-    // append renderer to provided container (fallback to body)
-    const mountPoint = container || document.body;
-    // set initial size based on mountPoint
-    const width = mountPoint.clientWidth || window.innerWidth;
-    const height = mountPoint.clientHeight || window.innerHeight;
-    renderer.setSize(width, height);
-    mountPoint.appendChild(renderer.domElement);
-    
-    const orbit = new OrbitControls(camera, renderer.domElement);
-    orbit.update();
 
     // pause flag + simple raycast pour détecter le clic sur un objet + stop the time
     let isPaused = false;
