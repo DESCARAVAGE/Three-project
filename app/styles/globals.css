@@ -37,6 +37,6 @@ html, body {
   width: 100%;
   height: 100%;
   display: block;
-  background: url(../../public/Présentation_Powerpoint_Design.jpeg) no-repeat center center;
-  background-size: cover;
+  /* background: url(../../public/3d_grid_pano_cubemap.png) no-repeat center center;
+  background-size: cover; */
 }

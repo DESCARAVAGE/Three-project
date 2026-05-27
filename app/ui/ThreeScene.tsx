@@ -72,9 +72,5 @@ export default function ThreeScene() {
     };
   }, []); // dépendances vides : exécute seulement au montage/démontage
 
-  return (
-    <>
-      <div style={{ width: "100%", height: "100%" }} ref={containerRef} />
-    </>
-  ); // conteneur pleine taille pour le rendu 3D
+  return <div style={{ width: "100%", height: "100%" }} ref={containerRef} />; // conteneur pleine taille pour le rendu 3D
 }
