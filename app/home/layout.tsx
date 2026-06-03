@@ -4,6 +4,7 @@ import NoSsr from "@mui/material/NoSsr";
 
  
 export default function Layout({ children }: { children: React.ReactNode }) {
+  //Get the state of the shape to update the great panel
   return (
     <NoSsr>
       <Box
