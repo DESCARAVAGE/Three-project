@@ -4,14 +4,20 @@ import { Box, Divider, IconButton } from "@mui/material";
 import ChangeHistoryOutlinedIcon from "@mui/icons-material/ChangeHistoryOutlined";
 import CircleOutlinedIcon from "@mui/icons-material/CircleOutlined";
 import CropSquareIcon from "@mui/icons-material/CropSquare";
-import PanelContainer from "./panels/panelContainer";
+import PanelShapeContainer from "./panels/panelShapeContainer";
+import PanelCamContainer from "./panels/panelCamContainer";
 import React from "react";
+
+export type Props = {
+  shape: string;
+};
 
 export default function BottomNav() {
   const [shape, setShape] = React.useState('Sphere');
 
   const handleChangeSphere = () => {
     window.dispatchEvent(new CustomEvent("selectObject", { detail: "sphere" }));
+    
     setShape('Sphere');
   };
 
@@ -27,7 +33,9 @@ export default function BottomNav() {
   
   return (
     <>
-      <PanelContainer shape={shape} />
+      <PanelCamContainer />
+      {/* <PanelBackground /> */}
+      <PanelShapeContainer shape={shape} />
       <Box component="header" className="navbar">
         <IconButton onClick={handleChangeSphere} sx={{ color: "white" }}>
           <CircleOutlinedIcon />

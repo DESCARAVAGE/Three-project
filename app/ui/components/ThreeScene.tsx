@@ -13,7 +13,7 @@ export default function ThreeScene() {
   useEffect(() => {
     if (!containerRef.current) return; // si le conteneur n'existe pas, on quitte
     const mount = containerRef.current; // élément DOM qui accueillera le canvas
-    const { renderer, camera, cube, circle, triangle } = createScene1(mount); // crée la scène et récupère renderer/camera/objets
+    const { renderer, camera, cube, circle, prisme } = createScene1(mount); // crée la scène et récupère renderer/camera/objets
 
     // définit l'aspect initial de la caméra pour correspondre au conteneur
     if (camera) {
@@ -27,10 +27,10 @@ export default function ThreeScene() {
     // gestionnaire pour l'événement personnalisé de sélection d'objet
     const handler = (e: Event) => {
       const select = (e as CustomEvent).detail; // récupère le détail (nom) de l'objet sélectionné
-      if (!circle || !cube || !triangle) return; // si un objet manque, rien à faire
+      if (!circle || !cube || !prisme) return; // si un objet manque, rien à faire
       circle.visible = select === "sphere"; // affiche/masque la sphère selon la sélection
       cube.visible = select === "cube"; // affiche/masque le cube selon la sélection
-      triangle.visible = select === "prisme"; // affiche/masque le prisme selon la sélection
+      prisme.visible = select === "prisme"; // affiche/masque le prisme selon la sélection
     };
 
     window.addEventListener("selectObject", handler as EventListener); // attache l'écouteur global pour la sélection

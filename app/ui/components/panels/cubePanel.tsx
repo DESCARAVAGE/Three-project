@@ -1,7 +1,7 @@
 import { Box, Button, IconButton, Typography, Slider } from "@mui/material";
 import { MuiColorInput } from "mui-color-input";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
-import { Props } from "./dataPanel";
+import { Props } from "./dataShape";
 import React from "react";
 
 export default function CubePanel({ shape }: Props) {

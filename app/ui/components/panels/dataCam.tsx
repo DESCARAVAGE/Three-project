@@ -1,20 +1,7 @@
-import { Box, Button, IconButton, Typography, Slider } from "@mui/material";
-import { MuiColorInput } from "mui-color-input";
-import RestartAltIcon from "@mui/icons-material/RestartAlt";
-import { Props } from "./dataShape";
+import { Box, Slider, Typography } from "@mui/material";
 import React from "react";
 
-export default function CirclePanel({ shape, }: Props) {
-  const handleChangeRadius = () => {};
-
-  const handleChangeWidthSeg = () => {};
-
-  const handleChangeheightSeg = () => {};
-
-  const handleChangeColor = () => {};
-
-  const handleChangeEdgeColor = () => {};
-
+export default function DataCam({ settingsCam }: any) {
   const [value, setValue] = React.useState("#ffffff");
 
   const handleChange = (newValue: string) => {
@@ -39,14 +26,13 @@ export default function CirclePanel({ shape, }: Props) {
   function valuetext(value: number) {
     return `${value}`;
   }
-
   return (
     <Box className="" sx={{ marginBottom: 3 }}>
       <Typography variant="h6" align="center" sx={{ marginBlock: 2 }}>
-        {shape}
+        Caméra
       </Typography>
       <Box sx={{ display: "flex", justifyContent: "space-around" }}>
-        <Typography>Taille :</Typography>
+        <Typography>Fov :</Typography>
         <Box sx={{ width: "10rem" }}>
           <Slider
             size="small"
@@ -62,7 +48,11 @@ export default function CirclePanel({ shape, }: Props) {
         </Box>
       </Box>
       <Box sx={{ display: "flex", justifyContent: "space-around" }}>
-        <Typography>wigth :</Typography>
+        <Typography>Ratio :</Typography>
+        <Box sx={{ width: "10rem" }}>0,1</Box>
+      </Box>
+      <Box sx={{ display: "flex", justifyContent: "space-around" }}>
+        <Typography>Near :</Typography>
         <Box sx={{ width: "10rem" }}>
           <Slider
             size="small"
@@ -78,7 +68,7 @@ export default function CirclePanel({ shape, }: Props) {
         </Box>
       </Box>
       <Box sx={{ display: "flex", justifyContent: "space-around" }}>
-        <Typography>height :</Typography>
+        <Typography>Far :</Typography>
         <Box sx={{ width: "10rem" }}>
           <Slider
             size="small"
@@ -93,42 +83,47 @@ export default function CirclePanel({ shape, }: Props) {
           />
         </Box>
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "space-around" }}>
-        <Typography>Color :</Typography>
+       <Box sx={{ display: "flex", justifyContent: "space-around" }}>
+        <Typography>Postion :</Typography>
         <Box sx={{ width: "10rem" }}>
-          <MuiColorInput format="hex" value={value} onChange={handleChange} />
+          <Slider
+            size="small"
+            aria-label="Small"
+            defaultValue={2}
+            getAriaValueText={valuetext}
+            step={1}
+            valueLabelDisplay="auto"
+            marks={marks}
+            min={1}
+            max={5}
+          />
         </Box>
-      </Box>
-      <Box sx={{ display: "flex", justifyContent: "space-around" }}>
-        <Typography>Contours :</Typography>
         <Box sx={{ width: "10rem" }}>
-          <MuiColorInput format="hex" value={value} onChange={handleChange} />
+          <Slider
+            size="small"
+            aria-label="Small"
+            defaultValue={2}
+            getAriaValueText={valuetext}
+            step={1}
+            valueLabelDisplay="auto"
+            marks={marks}
+            min={1}
+            max={5}
+          />
         </Box>
-      </Box>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          marginY: 1,
-          "& button": {
-            color: "white",
-            borderColor: "white",
-            "&:hover": {
-              borderColor: "white",
-              bgcolor: "rgba(255, 255, 255, 0.08)",
-            },
-          },
-        }}
-      >
-        <Button
-          variant="outlined"
-          endIcon={<RestartAltIcon />}
-          sx={{
-            width: "fit-content",
-          }}
-        >
-          Reset
-        </Button>
+        <Box sx={{ width: "10rem" }}>
+          <Slider
+            size="small"
+            aria-label="Small"
+            defaultValue={2}
+            getAriaValueText={valuetext}
+            step={1}
+            valueLabelDisplay="auto"
+            marks={marks}
+            min={1}
+            max={5}
+          />
+        </Box>
       </Box>
     </Box>
   );

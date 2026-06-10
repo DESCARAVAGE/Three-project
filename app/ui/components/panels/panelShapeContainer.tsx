@@ -6,10 +6,11 @@ import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import React from "react";
 import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import { Props } from "./dataPanel";
-import DataPanel from "./dataPanel";
+import DataShape from "./dataShape";
+import { Props } from "../bottomnav";
 
-export default function PanelContainer({ shape }: Props) {
+
+export default function PanelShapeContainer({ shape }: Props) {
   const [isVisible, setIsVisible] = React.useState(false);
 
   const togglePanel = () => {
@@ -17,17 +18,16 @@ export default function PanelContainer({ shape }: Props) {
   };
 
   return (
-    <Box className={`wrapper ${isVisible ? "" : "hidden"}`}>
-      <IconButton className="btn-panel" onClick={togglePanel}>
-        {isVisible ? (
-          <ArrowForwardIosIcon sx={{ color: "white" }} fontSize="medium" />
-        ) : (
-          <AutoFixHighIcon sx={{ color: "white" }} fontSize="medium" />
-        )}
-      </IconButton>
-
+    <Box className={`wrapper-right ${isVisible ? "" : "hidden"}`}>
+        <IconButton className="btn-panel" onClick={togglePanel}>
+          {isVisible ? (
+            <ArrowForwardIosIcon sx={{ color: "white" }} fontSize="medium" />
+          ) : (
+            <AutoFixHighIcon sx={{ color: "white" }} fontSize="medium" />
+          )}
+        </IconButton>
       <Box sx={{ width: 500 }} className={`panel ${isVisible ? "" : "hidden"}`}>
-        <DataPanel shape={shape} />
+        <DataShape shape={shape} />
       </Box>
     </Box>
   );

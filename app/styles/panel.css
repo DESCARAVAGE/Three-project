@@ -1,11 +1,26 @@
-.wrapper {
+.wrapper-left {
+  position: fixed;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  margin-top: 2rem;
+  align-items: center;
+  gap: 7;
+  transition: all .7s;
+  &.hidden {
+    left: -515;
+    transition: all .7s;
+  }
+}
+
+.wrapper-right {
   position: fixed;
   right: 0;
   z-index: 100;
   display: flex;
   margin-top: 2rem;
   align-items: center;
-  gap: 2;
+  gap: 7;
   transition: all .7s;
   &.hidden {
     right: -515;
@@ -18,7 +33,7 @@
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 4px;
   backdrop-filter: blur(10px);
-  margin: 1;
+  margin: 2;
   transition: all .7s;  
 }
 

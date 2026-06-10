@@ -8,6 +8,8 @@ export function createCube() {
 		const geometry = new THREE.BoxGeometry( 2, 2, 2 );
 		const material = new THREE.MeshBasicMaterial( { color: 0x6b09aa } );
 		const cube = new THREE.Mesh( geometry, material );
+
+		cube.name = 'cube';
 	
 		/// 2 - Créer les bordures
 		const edgesGeometry = new THREE.EdgesGeometry(geometry);

@@ -3,7 +3,7 @@ import { createCube } from '../objects/cube.js';
 import { createCam } from '../objects/camera.js';
 import { OrbitControls } from 'three/examples/jsm/Addons.js';
 import { createCircle } from '../objects/circle.js';
-import { createTriangle } from '../objects/triangle.js';
+import { createPrisme } from '../objects/prisme.js';
 
 
 export function createScene1(container) {
@@ -35,13 +35,13 @@ export function createScene1(container) {
     // Crée et ajoute les forme (avec bordures) depuis les modules. 
     const circle = createCircle();
     const cube = createCube();
-    const triangle = createTriangle();
+    const prisme = createPrisme();
     // add all objects but show only cube by default
     cube.visible = false;
-    triangle.visible = false;
+    prisme.visible = false;
     scene.add(circle);
     scene.add(cube);
-    scene.add(triangle);
+    scene.add(prisme);
 
     {
 		const loader = new THREE.TextureLoader();
@@ -71,7 +71,7 @@ export function createScene1(container) {
     function onPointerDown(e) {
         getPointerFromEvent(e);
         raycaster.setFromCamera(pointer, camera);
-        const hits = raycaster.intersectObjects([cube, circle, triangle], true);
+        const hits = raycaster.intersectObjects([cube, circle, prisme], true);
         if (hits.length) isPaused = true; // maintient la pause tant que l'utilisateur tient le clic/touch
     }
 
@@ -105,7 +105,7 @@ export function createScene1(container) {
             cube.rotation.z = position / 4000;
 
             circle.rotation.y = position / 5000;
-            triangle.rotation.z = position / 5000;
+            prisme.rotation.z = position / 5000;
         }
         renderer.render(scene, camera);
         
@@ -115,5 +115,5 @@ export function createScene1(container) {
 
     // no global resize here — parent component should handle resize using container size
 
-    return { scene, camera, renderer, cube, circle, triangle };
+    return { scene, camera, renderer, cube, circle, prisme };
 }
