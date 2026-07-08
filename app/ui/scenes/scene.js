@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { createCube } from '../objects/cube.js';
 import { createCam } from '../objects/camera.js';
 import { OrbitControls } from 'three/examples/jsm/Addons.js';
-import { createCircle } from '../objects/circle.js';
+import { createSphere } from '../objects/sphere.js';
 import { createPrisme } from '../objects/prisme.js';
 
 
@@ -33,13 +33,13 @@ export function createScene1(container) {
     // scene.add(axesHelper);
 
     // Crée et ajoute les forme (avec bordures) depuis les modules. 
-    const circle = createCircle();
+    const sphere = createSphere();
     const cube = createCube();
     const prisme = createPrisme();
     // add all objects but show only cube by default
     cube.visible = false;
     prisme.visible = false;
-    scene.add(circle);
+    scene.add(sphere.sphere);
     scene.add(cube);
     scene.add(prisme);
 
@@ -71,7 +71,7 @@ export function createScene1(container) {
     function onPointerDown(e) {
         getPointerFromEvent(e);
         raycaster.setFromCamera(pointer, camera);
-        const hits = raycaster.intersectObjects([cube, circle, prisme], true);
+        const hits = raycaster.intersectObjects([sphere.sphere, cube, prisme], true);
         if (hits.length) isPaused = true; // maintient la pause tant que l'utilisateur tient le clic/touch
     }
 
@@ -104,7 +104,7 @@ export function createScene1(container) {
             cube.rotation.y = position / 1000;
             cube.rotation.z = position / 4000;
 
-            circle.rotation.y = position / 5000;
+            sphere.sphere.rotation.y = position / 5000;
             prisme.rotation.z = position / 5000;
         }
         renderer.render(scene, camera);
@@ -115,5 +115,5 @@ export function createScene1(container) {
 
     // no global resize here — parent component should handle resize using container size
 
-    return { scene, camera, renderer, cube, circle, prisme };
+    return { scene, camera, renderer, cube, sphere, prisme };
 }

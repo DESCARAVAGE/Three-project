@@ -7,10 +7,10 @@ import React from "react";
 import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import DataShape from "./dataShape";
-import { Props } from "../bottomnav";
+import { PropsShape } from "../bottomnav";
 
 
-export default function PanelShapeContainer({ shape }: Props) {
+export default function PanelShapeContainer({ shape }: PropsShape) {
   const [isVisible, setIsVisible] = React.useState(false);
 
   const togglePanel = () => {

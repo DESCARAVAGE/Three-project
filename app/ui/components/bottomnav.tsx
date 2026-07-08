@@ -7,9 +7,12 @@ import CropSquareIcon from "@mui/icons-material/CropSquare";
 import PanelShapeContainer from "./panels/panelShapeContainer";
 import PanelCamContainer from "./panels/panelCamContainer";
 import React from "react";
+import { createScene1 } from "../scenes/scene";
 
-export type Props = {
-  shape: string;
+export type PropsShape = {
+  name: string;
+  material: object;
+  geometry: object;
 };
 
 export default function BottomNav() {
