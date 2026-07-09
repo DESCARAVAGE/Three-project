@@ -13,8 +13,8 @@ export default function Page() {
     >
       <Box sx={{ display: "flex", gap: "10px", marginBottom: "20px"  }}>
         <h1 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
-          Model - oui
-          
+          Model
+
         </h1>
         <ThreeDRotationIcon sx={{ fontSize: "2rem" }} />
       </Box>
